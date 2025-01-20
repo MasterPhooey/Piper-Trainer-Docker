@@ -39,7 +39,7 @@ docker run --gpus all -p 8888:8888 \
     masterphooey/piper-trainer:latest
 --gpus all: Enables GPU acceleration (omit if you don't have a GPU).
 -p 8888:8888: Maps port 8888 on your host to the container.
--v /path/to/your/dataset:/workspace/dataset:
+-v /path:/data:
 ```
 
 ### 4. Access Jupyter Lab
