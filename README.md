@@ -1,7 +1,7 @@
-#Piper Voice Trainer
+# Piper Voice Trainer
 This repository provides a Dockerized environment for training Piper voice models. The Docker image includes all necessary dependencies for dataset preprocessing, model training, and testing. A pre-built Docker image is available at masterphooey/piper-trainer.
 
-##Features
+## Features
 
 Preprocessing: Automatically preprocess audio datasets and generate metadata.csv.
 Training: Train Piper voice models using GPU acceleration.
@@ -11,45 +11,46 @@ Prerequisites
 
 Docker: Install Docker from https://www.docker.com.
 NVIDIA GPU (Optional): For GPU acceleration, ensure you have the NVIDIA Container Toolkit installed.
-##Quick Start
+## Quick Start
 
-1. Pull the Docker Image
+### 1. Pull the Docker Image
 
 Pull the pre-built Docker image from Docker Hub:
 
-bash
-Copy
+```bash
 docker pull masterphooey/piper-trainer:latest
-2. Prepare Your Dataset
+```
+### 2. Prepare Your Dataset
 
 Create a directory on your host machine for your dataset. For example:
 
-bash
-Copy
+```bash
 mkdir -p /path/to/your/dataset/wav
+```
 Place your audio files in the wav subdirectory. Supported formats include .wav, .mp3, and .flac.
 
-3. Run the Container
+### 3. Run the Container
 
 Run the Docker container with the dataset directory exposed:
 
-bash
-Copy
+```bash
 docker run --gpus all -p 8888:8888 \
     -v /path/to/your/dataset:/workspace/dataset \
     masterphooey/piper-trainer:latest
 --gpus all: Enables GPU acceleration (omit if you don't have a GPU).
 -p 8888:8888: Maps port 8888 on your host to the container.
--v /path/to/your/dataset:/workspace/dataset: Exposes your dataset directory to the container.
-4. Access Jupyter Lab
+-v /path/to/your/dataset:/workspace/dataset:
+```
+
+### 4. Access Jupyter Lab
 
 Open your browser and navigate to:
 
-Copy
+```bash
 http://localhost:8888
-You will be prompted to enter a token, which can be found in the terminal logs of the running container.
+```
 
-5. Use the Notebook
+### 5. Use the Notebook
 
 Open the train.ipynb notebook in Jupyter Lab. Follow the steps to:
 
@@ -60,12 +61,14 @@ Dataset Structure
 
 Your dataset directory should have the following structure:
 
-Copy
+```bash
 /path/to/your/dataset/
 └── wav/
     ├── audio1.wav
     ├── audio2.wav
     └── ...
+```
+
 Place all audio files in the wav subdirectory.
 The notebook will automatically generate metadata.csv and other required files.
 Pre-Built Docker Image
